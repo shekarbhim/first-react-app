@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,38 @@
   to {
     transform: rotate(360deg);
   }
+} */
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  background-color: #1976d2;
+}
+.middle-container {
+  height: 470px;
+  display: flex;
+  width: 100%;
+}
+.content-container {
+  width: 50%;
+}
+.nav {
+  width: 25%;
+  background-color: darkkhaki;
+}
+.footer {
+  height: 91px;
+  background-color: black;
+}
+.menu {
+  background-color: crimson;
+  height: 50px;
+}
+.content {
+  height: 420px;
+}
+.ads {
+  width: 25%;
+  background-color: aqua;
 }
