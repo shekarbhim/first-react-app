@@ -11,6 +11,9 @@ const Login = () => {
     // props.history.push('/login');
     navigate('/registration');
   }
+  const handleWelcome = () => {
+    navigate('/welcome');
+  }
   return (
     <div className="login-container">
       <Stack direction="column" alignItems="center" spacing={1}>
@@ -27,6 +30,9 @@ const Login = () => {
           </Button>
           <Button variant="contained" size="medium" onClick={handleRegistration}>
             Register
+          </Button>
+          <Button variant="contained" size="medium" onClick={handleWelcome}>
+            Welcome
           </Button>
         </Stack>
       </Stack>

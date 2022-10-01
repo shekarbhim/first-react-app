@@ -1,5 +1,12 @@
 .registration-container {
   height: 600px;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form{
   width: 50%;
   overflow: auto;
   justify-content: center;
