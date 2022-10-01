@@ -1,25 +1,3 @@
-// import * as React from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Box from "@mui/material/Box";
-// import Toolbar from "@mui/material/Toolbar";
-// import Typography from "@mui/material/Typography";
-// import IconButton from "@mui/material/IconButton";
-// import MenuIcon from "@mui/icons-material/Menu";
-
-// export default function ButtonAppBar() {
-//   return (
-//     <Box sx={{ flexGrow: 1 }}>
-//       <AppBar position="static">
-//         <Toolbar style={{ justifyContent: "center" }}>
-//           <Typography variant="h6" component="div">
-//             Hexaware Insurance Services
-//           </Typography>
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// }
-
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -40,10 +18,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import { Route,Routes, BrowserRouter, useNavigate } from 'react-router-dom';
-
-import Login from '../login/login';
-import Registration from '../registration'
 
 const drawerWidth = 240;
 
@@ -92,7 +66,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function TopBar() {
+export default function SideDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -104,40 +78,41 @@ export default function TopBar() {
     setOpen(false);
   };
 
-  const navItems = [{
-    label: 'Login',
-    path:'/login'
-  },{
-    label: 'Registration',
-    path:'/registration'
-  }];
-
-  // let navigate = useNavigate(); 
-  // const handleClick = (path) => {
-  //   // props.history.push('/login');
-  //   navigate(path);
-  // }
-
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
-          >
-            <MenuIcon />
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-          Hexaware Insurance Services
-          </Typography>
-        </Toolbar>
-      </AppBar>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </Box>
   );
 }
-

@@ -1,3 +1,17 @@
 .registration-container {
-  margin-bottom: 70px;
+  height: 600px;
+  width: 50%;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.dob{
+  width: 223px;
+}
+.address{
+  width: 95%;
+}
+.policy{
+  margin-top: 10px;
 }
